@@ -4,6 +4,40 @@
 <html lang="en">
 <head>
 <%@include file="/assets/jspfactory.jsp"%>
+<script type="text/javascript">
+  $(function(){
+    $("#putin").click(function(){
+    	var categoryId = $("#categoryid").val();
+    	  if(categoryId == ""){
+    		  alert("请输入分类ID");
+    		  $("#categoryid").focus();
+    		  return;
+    	  }
+    	var category = $("#categor").val();
+    	  if(category == ""){
+    		  alert("请输入分类");
+    		  $("#categor").focus();
+    		  return;
+    	  }  
+    		$.ajax({
+    			type:'get',
+    			url:'${ctxPath}/classify/addClassify.kexin',
+    			data:{
+    				categoryId:$("#categoryid").val(),
+    				category:$("#categor").val()
+    			},
+    			dataType:'json',
+    			success:function(data){
+    				alert("操作成功,返回页面");
+    				window.location.href='${ctxPath}/classify/getFindClassifyJsp.kexin';
+    			},
+    			error:function(){
+    				alert("操作失败");
+    			}
+    		});
+    	});
+    });
+</script>	
 </head>
 <body>
 	<div class="wrapper">
@@ -84,27 +118,5 @@
   </div>
  </div>
 </div>
-<script type="text/javascript">
-    $(function(){
-    	$("#putin").click(function(){
-    		$.ajax({
-    			type:'get',
-    			url:'${ctxPath}/classify/addClassify.kexin',
-    			data:{
-    				categoryId:$("#categoryid").val(),
-    				category:$("#categor").val()
-    			},
-    			dataType:'json',
-    			success:function(data){
-    				alert("操作成功,返回页面");
-    				window.location.href='${ctxPath}/classify/getFindClassifyJsp.kexin';
-    			},
-    			error:function(){
-    				alert("操作失败");
-    			}
-    		});
-    	});
-    });
-</script>	
 </body>
 </html>

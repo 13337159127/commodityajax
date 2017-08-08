@@ -168,8 +168,8 @@
 		error:function(){
 			alert("操作失败");
 		}
-	 });  
-   });
+	});  
+});
 </script>
 </body>
 </html>

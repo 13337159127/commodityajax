@@ -106,8 +106,20 @@
 		</div>
 </div>
 <script type="text/javascript">
-    $(function(){
-    	$("#putin").click(function(){
+ $(function(){
+    $("#putin").click(function(){
+       var 	categoryId = $("#categoryid").val();
+          if(categoryId == ""){
+        	  alert("请输入分类ID");
+        	  $("#categoryid").focus();
+        	  return;
+          }
+       var 	category = $("#categor").val();
+          if(category == ""){
+        	  alert("请输入分类");
+        	  $("#categor").focus();
+        	  return;
+          }   
     		$.ajax({
     			type:'get',
     			url:'${ctxPath}/classify/updateClassify.kexin',

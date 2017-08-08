@@ -112,8 +112,32 @@
  </div>
 </div>
 <script type="text/javascript">
-    $(function(){
-    	$("#putin").click(function(){
+$(function(){
+    $("#putin").click(function(){
+    	var supplierID=$("#ID").val();
+    	  if(supplierID==""){
+    		  alert("请输入供货商ID");
+    		  $("#ID").focus();
+    		  return;
+    	  }
+    	var supplierName=$("#name").val();
+    	  if(supplierName==""){
+    		  alert("请输入供货商姓名");
+    		  $("#name").focus();
+    		  return;
+    	  }  
+    	var supplierAddress=$("#address").val();
+    	  if(supplierAddress==""){
+    		  alert("请输入供货商地址");
+    		  $("#address").focus();
+    		  return;
+    	  }    
+    	var supplierPhone=$("#phone").val();
+    	  if(supplierPhone==""){
+    		  alert("请输入供货商电话");
+    		  $("#phone").focus();
+    		  return;
+    	  }      
     		$.ajax({
     			type:"get",
     			url:"${ctxPath}/supplier/updateSupplier.kexin",

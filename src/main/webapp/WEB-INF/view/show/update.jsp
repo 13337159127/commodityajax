@@ -28,8 +28,8 @@
    });
 </script>
 <script type="text/javascript">
-   $(function(){
-	  $.ajax({
+$(function(){
+   $.ajax({
 		  type:"get",
 		  url:"${ctxPath}/commodity/selectClassify.kexin",
 		  dataType:"json",
@@ -166,8 +166,44 @@
   </div>
 </div>
 <script type="text/javascript">
-    $(function(){
-    	$("#putin").click(function(){
+ $(function(){
+    $("#putin").click(function(){
+      var commodityId=$("#Id").val();
+        if(commodityId==""){
+        	alert("请输入商品ID");
+        	$("#Id").focus();
+        	return;
+        }
+      var commodityName=$("#Name").val();
+        if(commodityName==""){
+        	alert("请输入商品名称");
+        	$("#Name").focus();
+        	return;
+        }  
+      var commodityPrice=$("#Price").val();
+        if(commodityPrice==""){
+        	alert("请输入商品价格");
+        	$("#Price").focus();
+        	return;
+        }    
+      var commodityMuch=$("#Much").val();
+        if(commodityMuch==""){
+        	alert("请输入商品数量");
+        	$("#Much").focus();
+        	return;
+        }     
+      var commodityPeriod=$("#Period").val();
+        if(commodityPeriod==""){
+        	alert("请输入商品保质期");
+        	$("#Period").focus();
+        	return;
+        }       
+      var commodityYiedly=$("#Yiedly").val();
+        if(commodityYiedly==""){
+        	alert("请输入商品生产地");
+        	$("#Yiedly").focus();
+        	return;
+        }         
     		$.ajax({
     			type:'get',
     		    url:'${ctxPath}/commodity/updateCommodity.kexin',

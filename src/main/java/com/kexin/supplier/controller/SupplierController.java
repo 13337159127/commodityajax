@@ -52,7 +52,7 @@ public class SupplierController {
 	@RequestMapping("/findSupplier")
 	@ResponseBody
 	public List findSupplier() throws Exception {
-	   List<SupplierEntity> list = supplierService.findSupplier();
+	   List  list = supplierService.findSupplier();
 	   return list; 
 	}
 

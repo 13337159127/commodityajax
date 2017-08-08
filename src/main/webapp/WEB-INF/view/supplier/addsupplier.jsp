@@ -4,6 +4,54 @@
 <html lang="en">
 <head>
 <%@include file="/assets/jspfactory.jsp"%>
+<script type="text/javascript">
+    $(function(){
+      $("#putin").click(function(){	
+    	var supplierID = $("#ID").val();
+    	  if(supplierID == ""){
+    		  alert("请输入供货商ID");
+    		  $("#ID").focus();
+    		  return;
+    	  }
+    	var supplierName = $("#name").val();
+    	  if(supplierName == ""){
+    		  alert("请输入供货商姓名");
+    		  $("#name").focus();
+    		  return;
+    	  } 
+    	var supplierAddress = $("#address").val();
+    	  if(supplierAddress == ""){
+    		  alert("请输入供货商地址");
+    		  $("#address").focus();
+    		  return;
+    	  } 
+        var supplierAddress = $("#phone").val();
+    	  if(supplierPhone == ""){
+    		  alert("请输入供货商电话");
+    		  $("#phone").focus();
+    		  return;
+    	  } 
+    	   $.ajax({   		 
+    			type:"get",
+    			url:"${ctxPath}/supplier/addSupplier.kexin",
+    			data:{
+    				supplierID:$("#ID").val(),
+    			    supplierName:$("#name").val(),
+    			    supplierAddress:$("#address").val(),
+    			    supplierPhone:$("#phone").val(),
+    			},
+    			dataType:"json",
+    			success:function(data){
+    				alert("操作成功");
+    				window.location.href="${ctxPath}/supplier/getSupplierShowJsp.kexin";
+    			},
+    			error:function(){
+    				alert("操作失败");
+    			}
+    		});
+    	});
+    });
+</script>
 </head>
 <body>
 	<div class="wrapper">
@@ -88,29 +136,5 @@
   </div>
  </div>
 </div>
-<script type="text/javascript">
-    $(function(){
-      $("#putin").click(function(){	
-    	 $.ajax({   		 
-    			type:"get",
-    			url:"${ctxPath}/supplier/addSupplier.kexin",
-    			data:{
-    				supplierID:$("#ID").val(),
-    			    supplierName:$("#name").val(),
-    			    supplierAddress:$("#address").val(),
-    			    supplierPhone:$("#phone").val(),
-    			},
-    			dataType:"json",
-    			success:function(data){
-    				alert("操作成功");
-    				window.location.href="${ctxPath}/supplier/getSupplierShowJsp.kexin";
-    			},
-    			error:function(){
-    				alert("操作失败");
-    			}
-    		});
-    	});
-    });
-</script>
 </body>
 </html>

@@ -84,23 +84,25 @@
     </div>
 </div>
 <script type="text/javascript">
-    $(function(){
-    	$.ajax({
-    		type:"get",
-    		url:"${ctxPath}/supplier/findSupplier.kexin",
-    		datatype:"json",
-    		success:function(data){    			 
-    			alert("查询供货商信息");
-    			//$.parseJSON(data):JSON字符串转换为JavaScript对象。
-    			$.each($.parseJSON(data), function(index,value){
-    				$("tbody").append("<tr><td>"+value.supplierID+"</td><td>"+value.supplierName+"</td><td>"+value.supplierAddress+"</td><td>"+value.supplierPhone+"</td><td><a href='${ctxPath}/supplier/getUpdataSupplierJsp.kexin?supplierID="+value.supplierID+"'>编辑供货商</a></td><td><a href='${ctxPath}/supplier/deleteSupplier.kexin?supplierID="+value.supplierID+"'>删除供货商</a></td></tr>"); 	   				 
-    			})  	   
-    		},
-    		error:function(){
-    			alert("操作失败了");
-    		}
-    	});
-    });
+$(function(){
+   $.ajax({
+      type:"get",
+      url:"${ctxPath}/supplier/findSupplier.kexin",      
+      dataType:"json",
+      success:function(data){    			 
+      alert("查询供货商信息");
+      //如果返回来的是json串。$.parseJSON(data):JSON字符串转换为JSON对象。
+      $.each(data, function(index,value){
+    	  var res = "<tr><td>"+value.supplierID+"</td><td>"+value.supplierName+"</td><td>"+value.supplierAddress+"</td><td>"+value.supplierPhone+"</td><td><a href='${ctxPath}/supplier/getUpdataSupplierJsp.kexin?supplierID="+value.supplierID+"'>编辑供货商</a></td><td><a href='${ctxPath}/supplier/deleteSupplier.kexin?supplierID="+value.supplierID+"'>删除供货商</a></td></tr>";
+    	  alert(res);
+    	  $("tbody").append(res);    	 
+    	  })  	    
+    	},
+     error:function(){
+    	alert("操作失败了");
+    	}
+     });
+ });
 </script>
 </body>
 </html>

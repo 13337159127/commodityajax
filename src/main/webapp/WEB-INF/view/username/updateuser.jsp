@@ -4,25 +4,25 @@
 <html lang="en">
 <head>
 <%@include file="/assets/jspfactory.jsp"%>
-<script type="text/javascript">    
-    $(function(){  	           	 
-    	  $.ajax({
-      	    type:'get',   	    
-      	    url:'${ctxPath}/user/getUserById.kexin?userId=${userId}',   	    
-      	    dataType:'json',
-      	    success:function(data){ 	
-      	    	alert("是否要修改用户");
-      	    	$.each(data,function(index,value){
-      	    		$("#userid").val(value.userId),
-    				$("#loginname").val(value.loginName),  
-    				$("#password").val(value.passWord)      
-      	    	});     	    	    		   	    	  	    		       	    	     	    	   
-      	    },
-      	    error:function(){
-      	    	alert("返回数据失败");
-      	    },
-      	});      	 
-    });
+<script type="text/javascript">
+$(function(){  	           	 
+	  $.ajax({
+	    type:'get',   	    
+	    url:'${ctxPath}/user/getUserById.kexin?userId=${userId}',   	    
+	    dataType:'json',
+	    success:function(data){ 	
+	    	alert("是否要修改用户");
+	    	$.each(data,function(index,value){
+	    		$("#userid").val(value.userId),
+				$("#loginname").val(value.loginName),  
+				$("#password").val(value.passWord)      
+	    	});     	    	    		   	    	  	    		       	    	     	    	   
+	    },
+	    error:function(){
+	    	alert("返回数据失败");
+	    },
+	});      	 
+});
 </script>		
 </head>
 <body>
@@ -107,9 +107,27 @@
   </div>
 </div>
 <script type="text/javascript">
-    $(function(){
-    	$("#putin").click(function(){
-    		$.ajax({
+$(function(){
+   $("#putin").click(function(){
+	  var userId=$("#userid").val();
+	    if(userId==""){
+	    	alert("请输入用户ID");
+	    	$("#userid").focus();
+	    	return;
+	    }
+	  var loginName=$("#loginname").val();
+	    if(loginName==""){
+	    	alert("请输入用户名");
+	    	$("#loginname").focus();
+	    	return;
+	    }  
+	  var passWord=$("#password").val();
+	    if(passWord==""){
+	    	alert("请输入密码");
+	    	$("#password").focus();
+	    	return;
+	    }    
+        $.ajax({
     			type:'get',
     			url:'${ctxPath}/user/updateUserName.kexin',
     			data:{

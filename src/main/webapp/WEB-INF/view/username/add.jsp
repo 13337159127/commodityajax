@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
 <%@include file="/assets/jspfactory.jsp"%>
+<script  type="text/javascript" src="${ctxPath}/assets/commodityjs/adduser.js"></script>
 </head>
 <body>
 	<div class="wrapper">
@@ -15,13 +16,17 @@
 				</div>
 
 				<ul class="nav">
-					<li class="active"><a href="${ctxPath}/commodity/getCommodityShowJsp.kexin"> <i class="ti-panel"></i>
+					<li class="active"><a
+						href="${ctxPath}/commodity/getCommodityShowJsp.kexin"> <i
+							class="ti-panel"></i>
 							<p>返回首页</p>
 					</a></li>
-					<li><a href="${ctxPath}/classify/getFindClassifyJsp.kexin"> <i class="ti-map"></i>
+					<li><a href="${ctxPath}/classify/getFindClassifyJsp.kexin">
+							<i class="ti-map"></i>
 							<p>商品分类管理</p>
 					</a></li>
-					<li><a href="${ctxPath}/user/getFindUserJsp.kexin"> <i class="ti-bell"></i>
+					<li><a href="${ctxPath}/user/getFindUserJsp.kexin"> <i
+							class="ti-bell"></i>
 							<p>用户名管理</p>
 					</a></li>
 				</ul>
@@ -39,19 +44,17 @@
 						<li><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <i class="ti-panel"></i>
 								<p>用户名管理</p> <b class="caret"></b>
-						</a>
-					    </li>
+						</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"> <i class="ti-bell"></i>								 
+							data-toggle="dropdown"> <i class="ti-bell"></i>
 								<p>分类管理</p> <b class="caret"></b>
-						</a>
-						</li>
+						</a></li>
 					</ul>
 				</div>
 			</div>
-			</nav>		 
+			</nav>
 			<div class="content">
-				<div class="container-fluid">	
+				<div class="container-fluid">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="card">
@@ -59,55 +62,32 @@
 									<h4 class="title">添加用户信息</h4>
 								</div>
 								<div class="content table-responsive table-full-width">
-				<form action="${ctxPath}/user/addUserName.kexin" method="get">				
-				<table class="table table-striped">
-				<tr>
-               <th width="30%">用户名ID</th>
-               <td width="70%"><input type="text" name="userId" id="userid" value=""></td>
-               </tr>
-               <tr>
-              <th width="30%">用户名</th>
-              <td width="70%"><input type="text" name="loginName" id="loginname" value=""></td>
-              </tr>
-              <tr>
-              <th width="30%">用户名密码</th>
-              <td width="70%"><input type="text" name="passWord" id="password" value=""></td>
-              </tr>
-				</table>
-				<div class="text-center">
-				    <input type="button" value="添加" id="putin" class="btn btn-info btn-fill btn-wd"> 
+									<form action="${ctxPath}/user/addUserName.kexin" method="get">
+										<table class="table table-striped">
+											<tr>
+												<th width="30%">用户名ID</th>
+												<td width="70%"><input type="text" name="userId" id="userid" value=""></td>
+											</tr>
+											<tr>
+												<th width="30%">用户名</th>
+												<td width="70%"><input type="text" name="loginName" id="loginname" value=""></td>
+											</tr>
+											<tr>
+												<th width="30%">用户名密码</th>
+												<td width="70%"><input type="text" name="passWord" id="password" value=""></td>
+											</tr>
+										</table>
+										<div class="text-center">
+											<input type="button" value="添加" id="putin" class="btn btn-info btn-fill btn-wd">
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				</form>
-				</div>
-			   </div>
 			</div>
-		 </div>
 		</div>
-	 </div>
-  </div>
-</div>
-<script type="text/javascript">
-    $(function(){
-    	$("#putin").click(function(){
-    		$.ajax({
-    			type:'get',
-    			url:'${ctxPath}/user/addUserName.kexin',
-    			data:{
-    				  userId:$("#userid").val(),
-    				  loginName:$("#loginname").val(),  
-    				  passWord:$("#password").val()
-    			},
-    			dataType:'json',
-    			success:function(data){
-    				alert("操作成功");
-    				window.location.href='${ctxPath}/user/getFindUserJsp.kexin';
-    			},
-    			error:function(){
-    				alert("操作失败");
-    			},
-    		});
-    	});
-    });
-</script>
+	</div>
 </body>
 </html>

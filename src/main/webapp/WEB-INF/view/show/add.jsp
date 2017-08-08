@@ -4,8 +4,89 @@
 <html lang="en">
 <head>
 <%@include file="/assets/jspfactory.jsp"%>
-<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js" type="text/javascript"></script> 
-<!-- <script type="text/javascript" src="${ctxPath}/assets/js/addcommodity4.js"></script> --> 
+<script type="text/javascript">
+    $(function(){
+    	$.ajax({
+    	   type:"get",
+    	   url:"${ctxPath}/commodity/selectClassify.kexin",
+    	   dataType:"json",
+    	   success:function(data){
+    		   alert("商品展示信息");
+    		   $.each(data,function(index,value){
+    			  $("#categoryId").append("<option value="+value.categoryId+">"+value.category+"</option>"); 
+    		   });
+    	   },
+    	   error:function(){
+    		   alert("操作失败");
+    	   }
+    	});
+    });
+</script>
+<script type="text/javascript">
+ $(function(){
+   $("#putin").click(function(){
+	 var commodityId = 	$("#Id").val();
+	   if(commodityId == ""){
+		   alert("请输入商品的ID");
+		   $("#Id").focus();
+		   return;
+	   }
+	 var commodityName = $("#name").val();
+	   if(commodityName == ""){
+		   alert("请输入商品的名称");
+		   $("#name").focus();
+		   return;
+	   }  
+	 var commodityPrice = $("#price").val();
+	   if(commodityPrice == ""){
+		   alert("请输入商品的价格");
+		   $("#price").focus();
+		   return;
+	   }    
+	 var commodityMuch = $("#much").val();
+	   if(commodityMuch == ""){
+		   alert("请输入商品的数量");
+		   $("#much").focus();
+		   return;
+	   }  
+	 var commodityPeriod = $("#period").val();
+	   if(commodityPeriod == ""){
+		   alert("请输入商品的保质期");
+		   $("#period").focus();
+		   return;
+	   }
+	 var commodityYiedly = $("#yiedly").val();
+	   if(commodityYiedly == ""){
+		   alert("请输入商品生产地");
+		   $("#yiedly").focus();
+		   return;
+	   }          
+		 $.ajax({
+			 type:'get',     //提交方式 
+			 url:'${ctxPath}/commodity/addCommodity.kexin',		//数据的提交路劲
+			 data:{
+				    commodityId:$("#Id").val(),  
+				    commodityName:$("#name").val(),
+				    commodityPrice:$("#price").val(),
+				    commodityMuch:$("#much").val(),
+				    commodityPeriod:$("#period").val(),
+				    commodityYiedly:$("#yiedly").val(),
+				    categoryId:$("option").val()				   
+			 },   //需要提交的数据	
+		     dataType:'json',	//服务器返回数据的类型，例如xml,String,Json等
+		     //请求成功后的回调函数
+		     success:function(data){     
+		    	 alert("操作成功");
+		    	 window.location.href='${ctxPath}/commodity/getCommodityShowJsp.kexin';
+		     },
+		     //请求失败后的回调函数
+		     error: function() {   
+                 alert("操作失败");
+             },             
+		 }) ;
+	  });
+   });
+</script>	
 </head>
 <body>
 	<div class="wrapper">
@@ -109,52 +190,5 @@
 	</div>
   </div>
 </div>
-<script type="text/javascript">
-    $(function(){
-    	$.ajax({
-    	   type:"get",
-    	   url:"${ctxPath}/commodity/selectClassify.kexin",
-    	   dataType:"json",
-    	   success:function(data){
-    		   alert("商品展示信息");
-    		   $.each(data,function(index,value){
-    			  $("#categoryId").append("<option value="+value.categoryId+">"+value.category+"</option>"); 
-    		   });
-    	   },
-    	   error:function(){
-    		   alert("操作失败");
-    	   }
-    	});
-    });
-</script>
-<script type="text/javascript">
-   $(function(){
-	  $("#putin").click(function(){
-		 $.ajax({
-			 type:'get',     //提交方式 
-			 url:'${ctxPath}/commodity/addCommodity.kexin',		//数据的提交路劲
-			 data:{
-				    commodityId:$("#Id").val(),  
-				    commodityName:$("#name").val(),
-				    commodityPrice:$("#price").val(),
-				    commodityMuch:$("#much").val(),
-				    commodityPeriod:$("#period").val(),
-				    commodityYiedly:$("#yiedly").val(),
-				    categoryId:$("option").val()				   
-			 },   //需要提交的数据	
-		     dataType:'json',	//服务器返回数据的类型，例如xml,String,Json等
-		     //请求成功后的回调函数
-		     success:function(data){     
-		    	 alert("操作成功");
-		    	 window.location.href='${ctxPath}/commodity/getCommodityShowJsp.kexin';
-		     },
-		     //请求失败后的回调函数
-		     error: function() {   
-                 alert("操作失败");
-             },             
-		 }) ;
-	  });
-   });
-</script>	
 </body>
 </html>
