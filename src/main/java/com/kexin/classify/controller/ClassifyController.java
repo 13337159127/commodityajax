@@ -112,7 +112,7 @@ public class ClassifyController {
 		Map<String, String> mapRes = new HashMap<String, String>();
 		mapRes.put("key1", "可心");
 		return mapRes;
-		// return new ModelAndView("redirect:/classify/findClassify.kexin");
+	//    return new ModelAndView("redirect:/classify/findClassify.kexin");
 	}
 
 	/**

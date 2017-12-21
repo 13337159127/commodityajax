@@ -16,7 +16,7 @@
             </div>
             <ul class="nav">
                 <li class="active">
-                    <a href="${ctxPath}/commodity/getCommodityShowJsp.kexin">
+                     <a href="${ctxPath}/commodity/getCommodityShowJsp.kexin">
                         <i class="ti-user"></i>
                         <p>查询商品信息</p>
                     </a>

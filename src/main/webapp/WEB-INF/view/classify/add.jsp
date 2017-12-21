@@ -18,10 +18,10 @@
     		  alert("请输入分类");
     		  $("#categor").focus();
     		  return;
-    	  }  
-    		$.ajax({
-    			type:'get',
-    			url:'${ctxPath}/classify/addClassify.kexin',
+    	  }     	   
+    	 	$.ajax({
+    	 		type:'get',
+    	 		url:'${ctxPath}/classify/addClassify.kexin',
     			data:{
     				categoryId:$("#categoryid").val(),
     				category:$("#categor").val()
@@ -33,7 +33,7 @@
     			},
     			error:function(){
     				alert("操作失败");
-    			}
+    	     	}
     		});
     	});
     });
